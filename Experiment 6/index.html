@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SVG Drawing Tool</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    #controls {
+      margin-bottom: 10px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    #drawingArea {
+      border: 2px solid #333;
+      background-color: white;
+      cursor: crosshair;
+    }
+
+    button {
+      padding: 6px 12px;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🖊️ Interactive SVG Drawing Tool</h2>
+
+  <div id="controls">
+    <label for="color">Select Color: </label>
+    <input type="color" id="color" value="#ff0000">
+    <button id="undo">Undo</button>
+  </div>
+
+  <svg id="drawingArea" width="800" height="500"></svg>
+
+  <script>
+    const svg = document.getElementById('drawingArea');
+    const undoBtn = document.getElementById('undo');
+    const colorPicker = document.getElementById('color');
+
+    let drawing = false;
+    let shapes = [];
+
+    // Event Listeners
+    svg.addEventListener('mousedown', startDraw);
+    svg.addEventListener('mousemove', draw);
+    svg.addEventListener('mouseup', stopDraw);
+    undoBtn.addEventListener('click', undoShape);
+
+    function startDraw(e) {
+      drawing = true;
+      const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      circle.setAttribute('cx', e.offsetX);
+      circle.setAttribute('cy', e.offsetY);
+      circle.setAttribute('r', 5);
+      circle.setAttribute('fill', colorPicker.value);
+      svg.appendChild(circle);
+      shapes.push(circle);
+    }
+
+    function draw(e) {
+      if (!drawing) return;
+      const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      circle.setAttribute('cx', e.offsetX);
+      circle.setAttribute('cy', e.offsetY);
+      circle.setAttribute('r', 5);
+      circle.setAttribute('fill', colorPicker.value);
+      svg.appendChild(circle);
+      shapes.push(circle);
+    }
+
+    function stopDraw() {
+      drawing = false;
+    }
+
+    function undoShape() {
+      const lastShape = shapes.pop();
+      if (lastShape) svg.removeChild(lastShape);
+    }
+  </script>
+</body>
+</html>
