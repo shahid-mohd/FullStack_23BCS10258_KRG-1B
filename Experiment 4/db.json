@@ -1,0 +1,52 @@
+{
+  "books": [
+    {
+      "id": "1",
+      "title": "Atomic Habits",
+      "author": "James Clear",
+      "year": "2018",
+      "genre": "Self-Help",
+      "pages": "320"
+    },
+    {
+      "id": "2",
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "year": "1960",
+      "genre": "Fiction",
+      "pages": "281"
+    },
+    {
+      "id": "1760805923140",
+      "title": "Rich Dad Poor Dad",
+      "author": "Robert T. Kiyosaki",
+      "year": "1997",
+      "genre": "",
+      "pages": ""
+    },
+    {
+      "id": "1760805957007",
+      "title": "The Psychology of Money",
+      "author": "Morgan Housel",
+      "year": "2020",
+      "genre": "",
+      "pages": ""
+    },
+    {
+      "id": "1760805982857",
+      "title": "Deep Work",
+      "author": "Cal Newport",
+      "year": "2016",
+      "genre": "",
+      "pages": ""
+    },
+    {
+      "id": "1760807073183",
+      "title": "Clean Code",
+      "author": "Robert C. Martin",
+      "year": "2008",
+      "genre": "",
+      "pages": ""
+    }
+  ]
+}
